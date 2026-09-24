@@ -21,6 +21,7 @@ load_dotenv(ROOT / ".env")
 # Options are the folder names inside corpora/. See corpora/README.md.
 
 CORPUS = os.getenv("AI201_CORPUS", "campus_life")
+# CORPUS = os.getenv("AI201_CORPUS", "advice_threads"), rerun index after switching
 
 
 # ─── Chunking (Milestone 3) ──────────────────────────────────────────────────
