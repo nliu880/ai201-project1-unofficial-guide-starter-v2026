@@ -75,6 +75,7 @@ Each chunk retrieved only contains relevant information; ideas are mostly contai
 
 
 **Why this target:**
+<!-- -->
      Each paragraph in the documents introduces new information. When answering a questions, the model should be able to point to a specific paragraph that supports its answer. 
 
 
@@ -95,6 +96,7 @@ The chunk containing the answer must be attributed to the correct document in al
 
 
 **Why this target:**
+<!-- -->
      Citing sources, especially the correct one, ensures that the given information is verifiable, and not just made up. The cited information must actually exist in the source document. 
 
 
