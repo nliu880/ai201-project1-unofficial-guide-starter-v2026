@@ -27,6 +27,7 @@ Nicole Liu; city_guides
      this repo.
 
      Milestone 5. -->
+     This system answers questions pertaining to the ```city_guides corpus```. The corpus contains a set of documents introducing specific towns and cities (along with things to do, how to visit, dining options, etc.); overall guides on accessibility, eating, transit, and walking; as well as a breakdown of when to visit based on the seasons. This system is designed to answer clear and direct questions regarding those topics. 
 
 ## Chunking Strategy
 
@@ -59,37 +60,37 @@ My chunks will not overlap. All information in my corpus is organized in individ
 
      Milestone 3. -->
 
-======================================================================
+#### ======================================================================
 Chunk 1  |  source: guide_accessibility.md#0  |  produced by: chunker.py::split_documents
-======================================================================
+#### ======================================================================
 **Thornby Wells** is the easiest town in the region. It is flat, compact, and
 everything is within three minutes of everything else. Parking is free for two
 hours anywhere in town and the station is central. The pump room and gardens
 are level throughout.
 
-======================================================================
+#### ======================================================================
 Chunk 2  |  source: guide_accessibility.md#0  |  produced by: chunker.py::split_documents
-======================================================================
+#### ======================================================================
 **Brightwater** is level along the river and through the centre. The mill museum
 is step-free. The station is a 15-minute walk from campus on flat ground, or the
 shuttle meets the four busiest arrivals.
 
-======================================================================
+#### ======================================================================
 Chunk 3  |  source: guide_accessibility.md#0  |  produced by: chunker.py::split_documents
-======================================================================
+#### ======================================================================
 **Givens Mill** is one flat street along the river. The mill tour involves
 stairs and the machinery floor is not accessible; the tearoom and riverside are.
 
-======================================================================
+#### ======================================================================
 Chunk 4  |  source: guide_accessibility.md#0  |  produced by: chunker.py::split_documents
-======================================================================
+#### ======================================================================
 **Halden Bay** is built on three levels connected by stepped lanes. The harbour
 front is level; everything above it is not. This is hard going with luggage or a
 pushchair, let alone a wheelchair.
 
-======================================================================
+#### ======================================================================
 Chunk 5  |  source: guide_accessibility.md#0  |  produced by: chunker.py::split_documents
-======================================================================
+#### ======================================================================
 The nearest full hospital is in Marchwood. Brightwater has a hospital;
 Kestrelford, Halden Bay, Corry Vale, Givens Mill and Elder Ness have minor
 injuries units with limited hours or nothing at all.
@@ -126,13 +127,18 @@ injuries units with limited hours or nothing at all.
      visible. Milestone 4. -->
 
 **Question:**
+Where should I go to get fresh seafood?
 
 **Answer:**
-
 ```
+To get fresh seafood, you should go to Halden Bay's two harbour restaurants, which buy directly from boats that land in the early morning (*guide_eating.md* and *guide_halden_bay.md*).
+
+Sources retrieved: guide_eating.md, guide_halden_bay.md, guide_pellew_sands.md
 ```
 
 **My relevance cutoff:**
+
+My test questions had best distances between 0.183 and 0.511. The out of scope questions had best distances above 0.805. I will set my relevance cutoff at 0.65, which is halfway between the upper best distance of my in corpus questions and the lower best distance of my out of corpus questions. 
 
 <!-- The number you set in config.py, and how you got there.
 
@@ -145,7 +151,16 @@ injuries units with limited hours or nothing at all.
 
 | Question | In corpus? | Best distance |
 |---|---|---|
-|  |  |  |
+| How often is there a train to the airport from Brightwater? | Yes | 0.183 |
+| Where should I go to get fresh seafood? | Yes | 0.411 |
+| During which season are there the least amount of students in town? | Yes | 0.511 |
+| I am in a wheelchair. Which towns should I not visit? | Yes | 0.495 |
+| Which cities have museums open to visit? | Yes | 0.430 |
+| What is the capital of Mongolia? | No | 0.805 |
+| How do I change the oil in a diesel engine? | No | 0.876 |
+| Who won the 1994 World Cup? | No | 0.967 |
+| What is the recommended dosage of ibuprofen for a headache? | No | 0.849 |
+| How do I write a for loop in Rust? | No | 0.859 |
 
 ## How I Used AI
 
@@ -159,8 +174,12 @@ injuries units with limited hours or nothing at all.
      Milestone 5. -->
 
 **1.**
+I completed this project on my own as I joined the class late. I used Claude in place of breakout room partners as suggested by the project guidelines. I would give Claude the answer criteria, a sample of chunks, and the distances, along with the question statements. Based on the response given to my chunk samples (asking if a question could be answered by it), I reworked my chunking function to skip past the initial document introduction/description in one of the documents as it was meta information and not related to the actual material in the corpus. 
 
 **2.**
+In Milestone 4, I gave the best distances to Claude without the ensuing context. Based on the previous exchange of information, Claude suspected that the lower set of numbers were out of corpus and the higher set in corpus. Giving the context and asking about a cutoff gave a response more along the lines of what I was expecting, along with excess warnings about small sample sizes and lack of more ambiguous or poorly worded questions. I had initially proposed a cutoff point between the upper best distance of my in corpus questions and the lower best distance of my out of corpus questions (0.65), which was also suggested by Claude. I did not change my cutoff point after this. 
+
+I did not use AI otherwise in this project. I wrote my chunking function myself and determined my own criteria, reasoning behind it, and questions pertaining to the corpus material. 
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
