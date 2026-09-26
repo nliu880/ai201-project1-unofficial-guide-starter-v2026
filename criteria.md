@@ -25,7 +25,7 @@ contains the answer.
 **Why this target:**
 <!-- e.g. "One of my questions is about a topic only two documents mention, so
      I expect that one to be hard." -->
-
+     One of my questions expects answers from multiple documents, however, several of them don't explicitly frame the answer as an option. The model may not make the association without it being explicitly named, so this answer may be incorrect.
 ---
 
 ## 2. Every answer names a source
@@ -35,6 +35,7 @@ Every answer the system produces names at least one source document.
 **Why this target:**
 <!-- Why all five and not four? What about your setup makes that achievable —
      or what would have to go wrong for it not to be? -->
+     Each question has an answer, or part of an answer, directly accessible in the source documents. These answers should be cited. 
 
 ---
 
@@ -52,10 +53,13 @@ in at least 4 of 5 tries.
 **Why this target:**
 <!-- What did your distances look like when you set the cutoff in Milestone 4?
      Was there a clean gap, or did the two groups overlap? -->
+     There is no point in passing an irrelevant question to model. The system should recognize when questions are irrelevant. 
 
 ---
 
-## 4. Something about your chunks
+## 4. Each retrieved chunk is no longer than 500 characters in length
+
+Each chunk retrieved only contains relevant information.
 
 <!-- YOU WRITE THIS ONE.
 
@@ -72,12 +76,14 @@ in at least 4 of 5 tries.
 
 
 **Why this target:**
-
+     The longest relevant chunk, regarding accessibility, should be just under 500 characters. All other chunks are closer to 150-250 characters in length. The chunk should be limited to only relevant information.
 
 
 ---
 
-## 5. Your choice
+## 5. Each answer attributes the chunk containing the answer to the correct document source
+
+The chunk containing the answer must be attributed to the correct document in all the questions. Despite of the questions pulling chunks from multiple documents, the citation and the chunk's source must still match up. 
 
 <!-- YOU WRITE THIS ONE TOO.
 
@@ -90,7 +96,7 @@ in at least 4 of 5 tries.
 
 
 **Why this target:**
-
+     Citing sources, especially the correct one, ensures that the given information is verifiable, and not just made up. The cited information must actually exist in the source document. 
 
 
 ---
