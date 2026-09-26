@@ -31,7 +31,12 @@ Nicole Liu; city_guides
 ## Chunking Strategy
 
 **Chunk size:**
+The current default chunking for this corpus splits documents through labeled sections, with an average of 650 characters per chunk. I would like my chunks to by paragraph as each paragraph introduces new information. 
+
+<!--For simpler yes/no/single answer questions, the chunk should be 50-250 characters. Questions that draw from multiple documents, or have multiple answers, should have longer chunks (~500 characters total). -->
+
 **Overlap:**
+My chunks will not overlap. All information in my corpus is organized in individual paragraphs by topic, so there is no need to worry that each topic is split unevenly across chunks.
 
 <!-- What about YOUR documents made you pick these numbers? Short posts and
      long sectioned guides don't want the same chunking, and "800 seemed
@@ -54,7 +59,42 @@ Nicole Liu; city_guides
 
      Milestone 3. -->
 
-**Chunk 1** — source: `` — produced by: ``
+======================================================================
+Chunk 1  |  source: guide_accessibility.md#0  |  produced by: chunker.py::split_documents
+======================================================================
+**Thornby Wells** is the easiest town in the region. It is flat, compact, and
+everything is within three minutes of everything else. Parking is free for two
+hours anywhere in town and the station is central. The pump room and gardens
+are level throughout.
+
+======================================================================
+Chunk 2  |  source: guide_accessibility.md#0  |  produced by: chunker.py::split_documents
+======================================================================
+**Brightwater** is level along the river and through the centre. The mill museum
+is step-free. The station is a 15-minute walk from campus on flat ground, or the
+shuttle meets the four busiest arrivals.
+
+======================================================================
+Chunk 3  |  source: guide_accessibility.md#0  |  produced by: chunker.py::split_documents
+======================================================================
+**Givens Mill** is one flat street along the river. The mill tour involves
+stairs and the machinery floor is not accessible; the tearoom and riverside are.
+
+======================================================================
+Chunk 4  |  source: guide_accessibility.md#0  |  produced by: chunker.py::split_documents
+======================================================================
+**Halden Bay** is built on three levels connected by stepped lanes. The harbour
+front is level; everything above it is not. This is hard going with luggage or a
+pushchair, let alone a wheelchair.
+
+======================================================================
+Chunk 5  |  source: guide_accessibility.md#0  |  produced by: chunker.py::split_documents
+======================================================================
+The nearest full hospital is in Marchwood. Brightwater has a hospital;
+Kestrelford, Halden Bay, Corry Vale, Givens Mill and Elder Ness have minor
+injuries units with limited hours or nothing at all.
+
+<!-- **Chunk 1** — source: `` — produced by: ``
 
 ```
 ```
@@ -78,6 +118,7 @@ Nicole Liu; city_guides
 
 ```
 ```
+-->
 
 ## Sample Answer
 

@@ -25,7 +25,7 @@ contains the answer.
 **Why this target:**
 <!-- e.g. "One of my questions is about a topic only two documents mention, so
      I expect that one to be hard." -->
-     One of my questions expects answers from multiple documents, however, several of them don't explicitly frame the answer as an option. The model may not make the association without it being explicitly named, so this answer may be incorrect.
+     One of my questions takes the absence of information as an answer, which the model may not be able to present as an answer itself. 
 ---
 
 ## 2. Every answer names a source
@@ -59,7 +59,7 @@ in at least 4 of 5 tries.
 
 ## 4. Each retrieved chunk is no longer than 500 characters in length
 
-Each chunk retrieved only contains relevant information.
+Each chunk retrieved only contains relevant information; ideas are mostly contained by paragraph, which max out around 500 characters in length.
 
 <!-- YOU WRITE THIS ONE.
 
@@ -74,9 +74,8 @@ Each chunk retrieved only contains relevant information.
           in my corpus turned out to be a heading with no content under it." -->
 
 
-
 **Why this target:**
-     The longest relevant chunk, regarding accessibility, should be just under 500 characters. All other chunks are closer to 150-250 characters in length. The chunk should be limited to only relevant information.
+     Each paragraph in the documents introduces new information. When answering a questions, the model should be able to point to a specific paragraph that supports its answer. 
 
 
 ---

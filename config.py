@@ -20,8 +20,8 @@ load_dotenv(ROOT / ".env")
 # Change this to switch corpora, or pass --corpus on the command line.
 # Options are the folder names inside corpora/. See corpora/README.md.
 
-CORPUS = os.getenv("AI201_CORPUS", "campus_life")
-# CORPUS = os.getenv("AI201_CORPUS", "advice_threads"), rerun index after switching
+# CORPUS = os.getenv("AI201_CORPUS", "campus_life")
+CORPUS = os.getenv("AI201_CORPUS", "city_guides") # rerun index after switching
 
 
 # ─── Chunking (Milestone 3) ──────────────────────────────────────────────────
@@ -30,6 +30,9 @@ CORPUS = os.getenv("AI201_CORPUS", "campus_life")
 
 CHUNK_SIZE = 800        # characters per chunk
 CHUNK_OVERLAP = 120     # characters shared between neighbouring chunks
+
+# i have chosen to chunk by paragraph with no overlap, so i believe these variables 
+# are no longer used
 
 
 # ─── Retrieval (Milestone 4) ─────────────────────────────────────────────────
