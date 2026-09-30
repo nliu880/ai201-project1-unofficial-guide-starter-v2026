@@ -385,10 +385,14 @@ The response to Question 1 across all 3 runs provide sources, but fail to cite `
 
 **What I changed:**
 
+I chose to update my scoring function from the basic one given in class.
+
 **Why I picked it:**
 
 <!-- Connect it to a specific diagnosis above in one sentence. If you can't,
      you picked a fix because it sounded impressive. -->
+
+This is connected to Criterion 1. retrieved chunks contain the answer. In several of the previous reponses, the answer was correctly given, but phrased slightly differently. I reworked my scoring function to check if correct keywords were given in the generated answer instead of just checking to see if the exact phrase was in there. 
 
 ### Run Log — After
 
@@ -397,11 +401,11 @@ The response to Question 1 across all 3 runs provide sources, but fail to cite `
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunks contain the answer | 4/5 | 2/5 | 2/5 | 2/5 | MISSED |
+| 2. Every answer names a source | 5/5 |3/5 | 4/5 | 4/5 | MISSED |
+| 3. The relevance gate stops out-of-corpus questions | 4/5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Each retrieved chunk is no longer than 500 characters in length | 5/5 | 5/5 | 5/5 | 5/5 | MET |
+| 5. Each answer attributes the chunk containing the answer to the correct document sources | 5/5 | 3/5 | 3/5 | 3/5 | MISSED |
 
 **Did it help?**
 
@@ -411,6 +415,10 @@ The response to Question 1 across all 3 runs provide sources, but fail to cite `
      tell.
 
      Milestone 4. -->
+
+Modifying the scoring function this way allowed this system to more accurately judge if the answer was correct, which it was in roughly half the questions/runs. In other answers, the scoring function wasn't able to distinguish between a general concept and a specific one. For example, most people would consider "July and August" and "summer" to be the same when referring to seasons. However, my question expected the phrase "summer" and the answer used "July and August", thus, this generated answer was considered incorrect. 
+
+There were also two questions that would take the absense of information as information itself; i.e. if it wasn't explicitly mentioned, the reader would assume they don't exist. It seems the model isn't capable of that type of logic. This is a misunderstanding and poor assumption on my part when I created the questions. In order to test the pipeline as it was designed, I would have to rephrase these questions and answers to have explicit references in the given corpus. 
 
 ## What's Still Broken
 
