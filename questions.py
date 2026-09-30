@@ -25,7 +25,7 @@ QUESTIONS = [
     # {"question": "...", "expects": "..."},
     {"question": "How often is there a train to the airport from Brightwater?", "expects": "no train"},
     {"question": "Where should I go to get fresh seafood?", "expects": "Halden Bay"},
-    {"question": "During which season are there the least amount of students in town?", "expects": "Late May or summer"},
+    {"question": "During which season are there the least amount of students in town?", "expects": "Late May, summer"},
     {"question": "I am in a wheelchair. Which towns should I not visit?", "expects": "Kestrelford, Halden Bay, Corry Vale, Elder Ness"},
     {"question": "Which cities have museums open to visit?", "expects": "Brightwater, Marchwood"},
 ]
