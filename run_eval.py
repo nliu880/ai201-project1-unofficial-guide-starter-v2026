@@ -124,7 +124,7 @@ def main():
                     "question": question,
                     "run": run,
                     "answer": answer, 
-                    "answer length": len(answer),
+                    "answer_length": len(answer),
                     "sources": sorted({r.source for r in results}),
                     "best_distance": decision.best_distance,
                     "gate_passed": decision.passed,
@@ -256,6 +256,7 @@ def write_report(rows, transcript, gate_rows, args, corpus, top_k, threshold, sc
             f"- Best distance: {entry['best_distance']:.4f} "
             f"({'passed' if entry['gate_passed'] else 'refused by'} the gate)",
             f"- Sources retrieved: {', '.join(entry['sources']) or 'none'}",
+            f"- Answer length: {entry['answer_length'] or 'none'}",
             "",
             "```",
             entry["answer"],
