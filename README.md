@@ -181,6 +181,9 @@ In Milestone 4, I gave the best distances to Claude without the ensuing context.
 
 I did not use AI otherwise in this project. I wrote my chunking function myself and determined my own criteria, reasoning behind it, and questions pertaining to the corpus material. 
 
+**Unit 2 Update** 
+I was not able to attend class last week and completed this project on my own. I used Claude in place of the breakout rooms as suggested in the project breakdown. 
+
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
      claims earns nothing.
@@ -416,7 +419,7 @@ This is connected to Criterion 1. retrieved chunks contain the answer. In severa
 
      Milestone 4. -->
 
-Modifying the scoring function this way allowed this system to more accurately judge if the answer was correct, which it was in roughly half the questions/runs. In other answers, the scoring function wasn't able to distinguish between a general concept and a specific one. For example, most people would consider "July and August" and "summer" to be the same when referring to seasons. However, my question expected the phrase "summer" and the answer used "July and August", thus, this generated answer was considered incorrect. 
+Modifying the scoring function this way allowed this system to more accurately judge if the answer was correct, which it was in roughly half the questions/runs. In other answers, the scoring function wasn't able to distinguish between a general concept and a specific example. For example, I would consider "July and August" and "summer" to be the same when referring to seasons. However, my question expected the phrase "summer" and the answer used "July and August", thus, this generated answer was considered incorrect. 
 
 There were also two questions that would take the absense of information as information itself; i.e. if it wasn't explicitly mentioned, the reader would assume they don't exist. It seems the model isn't capable of that type of logic. This is a misunderstanding and poor assumption on my part when I created the questions. In order to test the pipeline as it was designed, I would have to rephrase these questions and answers to have explicit references in the given corpus. 
 
@@ -430,9 +433,22 @@ There were also two questions that would take the absense of information as info
 
      Milestone 5. -->
 
+**Criterion 1: Retrieved chunks contain the answer**
+This criterion could be further improved by making the scoring function more robust or by asking the right type of question. As I had mentioned in the previous section, the scoring function can't differentiate between a general concept and a specific example in it (July or August vs. summer). I would personally consider these to be the same thing in context of the question. Creating a scoring function that could do that, however, feels far more complex than what this project seems to call for. 
+
+The other previously mentioned point also applies to this criterion: my questions were poorly designed for this type of pipeline and system. The pipeline can only use explicitly stated information to generate an answer and is not capable of taking the absence of information as an answer. If I redesigned my questions to follow this logic, only asking for explicitly stated material, I believe that would result in correct answers, not a statement claiming lack of information. Changing the questions at this point feels like cheating, though, or against the spirit of this assignment and criteria judging. Therefore, I have not. 
+
+**Criterion 2: Every answer names a source**
+I would have liked each answer to come with a list of sources used to generate that answer. In the case where the pipeline wasn't able to create an answer, I would have still liked to be given a list of places/documents where the pipeline looked within the response itself. This could potentially be solved by adding a statement in `generate.py` to always print out all the documents at the end of each answer. I did not implement this as I didn't fully understand how `generate.py` worked, and I didn't want to mess with a working process when I was already short on time.
+
+**Criterion 5: Each answer attributes the chunk containing the answer to the correct document sources**
+This criterion could likely be met by fixing the errors that led to missing Criterion 1 and 2. This criterion is basically just a stricter version of Criterion 2. Asking the right style of question and mandating that the sources be cited within the answer using the methods previously described would make my responses meet this criterion. However, changing the questions at this point goes against the idea of using criterions to benchmark a pipeline and I did not have time to determine how exactly to force the answer generation functions to return the sources as well. 
+
 ## What I'd Do Differently
 
 <!-- Knowing what you know now — which of your five criteria would you write
      differently, and why?
 
      Milestone 5. -->
+
+     I would write Criterion 2 differently. Criterions 2 and 5 are pretty similar, with Criterion 5 being a stricter version. I don't need both, and I could replace Criterion 2 with something about retrieval, such as the retrieved and cited sources don't contain any excess/non-relevant ones.
