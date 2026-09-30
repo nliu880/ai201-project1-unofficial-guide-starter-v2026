@@ -106,6 +106,7 @@ def main():
         question = item["question"]
         expects = item.get("expects", "")
         print(f"\n{question}")
+        print(f"\n{expects}")
 
         run_results = []
         for run in range(1, args.runs + 1):
@@ -122,7 +123,8 @@ def main():
                 {
                     "question": question,
                     "run": run,
-                    "answer": answer,
+                    "answer": answer, 
+                    "answer length": len(answer),
                     "sources": sorted({r.source for r in results}),
                     "best_distance": decision.best_distance,
                     "gate_passed": decision.passed,
